@@ -44,7 +44,8 @@ export const RegistrationPage = () => {
   const onRegistrationFormSubmit = (data: any) => {
     console.log(data);
     if (data) {
-      navigate("/login-page");
+      navigate("/profile-page");
+      localStorage.setItem('userName', data.userName)
     }
   };
 
