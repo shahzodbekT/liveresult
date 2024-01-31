@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  IShowMatchesResponse,
   useShowMatchesQuery,
 } from "../../store/Api/matchApi";
 
