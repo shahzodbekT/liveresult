@@ -54,7 +54,7 @@ export const RegistrationPage = () => {
       <Navbar />
       <form
         onSubmit={handleSubmit(onRegistrationFormSubmit)}
-        className="flex m-36 flex-col justify-center items-center gap-3"
+        className="flex flex-col justify-center items-center gap-3"
       >
         <h1 className="text-4xl mb-3  ">Регистрация</h1>
         <Controller

@@ -3,6 +3,8 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { LoginPage } from "./pages/RegLoginPages/LoginPage";
 import { RegistrationPage } from "./pages/RegLoginPages/RegistrationPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,7 +29,9 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
       </div>
     </div>
   );
