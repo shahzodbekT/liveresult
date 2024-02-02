@@ -44,8 +44,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
-      <Navbar />
+    <div className="mt-40">
       <form
         onSubmit={handleSubmit(onLoginFormSubmit)}
         className="flex m-36 flex-col justify-center items-center gap-3"
@@ -79,6 +78,6 @@ export const LoginPage = () => {
         />
         <AppButton type="submit" buttonText="Зарегистрироваться" />
       </form>
-    </>
+    </div>
   );
 };

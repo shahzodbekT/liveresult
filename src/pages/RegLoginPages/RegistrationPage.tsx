@@ -50,8 +50,7 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <>
-      <Navbar />
+    <div className="mt-40">
       <form
         onSubmit={handleSubmit(onRegistrationFormSubmit)}
         className="flex flex-col justify-center items-center gap-3"
@@ -62,7 +61,7 @@ export const RegistrationPage = () => {
           control={control}
           render={({ field }) => (
             <AppInput
-              type="text"
+              type="email"
               placeholder="Введите email"
               hasError={!!errors.userEmail}
               errorText={errors.userEmail?.message as string}
@@ -111,6 +110,6 @@ export const RegistrationPage = () => {
         />
         <AppButton type="submit" buttonText="Зарегистрироваться" />
       </form>
-    </>
+    </div>
   );
 };

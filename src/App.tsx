@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
+      <div className="max-w-full">
         <Provider store={store}>
           <RouterProvider router={router} />
         </Provider>
