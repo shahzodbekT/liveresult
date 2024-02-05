@@ -5,6 +5,8 @@ import { RegistrationPage } from "./pages/RegLoginPages/RegistrationPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { MatchPage } from "./pages/MatchPage/MatchPage";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +25,10 @@ function App() {
     {
       path: "/profile-page",
       element: <ProfilePage />,
+    },
+    {
+      path: `/match-page/:matchId`,
+      element: <MatchPage />,
     },
   ]);
 
