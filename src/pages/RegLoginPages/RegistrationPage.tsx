@@ -6,10 +6,15 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const registrationPageFields = {
+interface RegistrationFormData {
+  userEmail: string;
+  userName: string;
+  userPassword: string;
+}
+
+const registrationPageFields: RegistrationFormData = {
   userEmail: "",
   userName: "",
-  userPhoneNumber: "",
   userPassword: "",
 };
 
@@ -30,14 +35,14 @@ export const RegistrationPage = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm({
+  } = useForm<RegistrationFormData>({
     defaultValues: registrationPageFields,
     resolver: yupResolver(registrationValidationSchema),
   });
 
   const navigate = useNavigate();
 
-  const onRegistrationFormSubmit = (data: any) => {
+  const onRegistrationFormSubmit = (data: RegistrationFormData) => {
     console.log(data);
     if (data) {
       navigate("/login-page");
@@ -99,3 +104,4 @@ export const RegistrationPage = () => {
     </div>
   );
 };
+

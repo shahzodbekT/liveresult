@@ -6,14 +6,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
-const registrationPageFields = {
+interface LoginFormValues {
+  userEmail: string;
+  userPassword: string;
+}
+
+const loginPageFields: LoginFormValues = {
   userEmail: "",
-  userName: "",
-  userPhoneNumber: "",
   userPassword: "",
 };
 
-const registrationValidationSchema = yup.object({
+const loginValidationSchema = yup.object({
   userEmail: yup
     .string()
     .required("Обязательное поле")
@@ -29,17 +32,17 @@ export const LoginPage = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm({
-    defaultValues: registrationPageFields,
-    resolver: yupResolver(registrationValidationSchema),
+  } = useForm<LoginFormValues>({
+    defaultValues: loginPageFields,
+    resolver: yupResolver(loginValidationSchema),
   });
 
   const navigate = useNavigate();
 
-  const onLoginFormSubmit = (data: any) => {
+  const onLoginFormSubmit = (data: LoginFormValues) => {
     console.log(data);
     if (data) {
-      navigate("/main-page");
+      navigate("/profile-page");
     }
   };
 

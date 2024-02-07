@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 type FavoritesTableProps = {
   favoriteMatches: string[];
+  onDeleteFavorite: (matchId: string) => void;
 };
 
 export const FavoritesTable: React.FC<FavoritesTableProps> = ({
   favoriteMatches,
+  onDeleteFavorite,
 }) => {
-
   const navigate = useNavigate();
 
   const handleRowClick = (match: MatchProps) => {
@@ -27,6 +28,7 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
             <th>Score</th>
             <th>Away Team</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +37,12 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
               localStorage.getItem(`favoriteMatch_${matchId}`) || "null"
             ) as MatchProps;
             return (
-              <tr key={matchId} onClick={() => {handleRowClick(matchData)}}>
+              <tr
+                key={matchId}
+                onClick={() => {
+                  handleRowClick(matchData);
+                }}
+              >
                 <td>
                   <img
                     className="size-5"
@@ -53,6 +60,17 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
                     src={matchData.team_away_badge}
                     alt={matchData.match_awayteam_name}
                   />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDeleteFavorite(matchId);
+                    }}
+                  >
+                    Remove
+                  </button>
                 </td>
               </tr>
             );

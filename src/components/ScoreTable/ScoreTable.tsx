@@ -58,7 +58,7 @@ export const ScoreTable: React.FC = () => {
   return (
     <div className="overflow-x-auto">
       <h1 className="text-center text-3xl m-5">Favorites:</h1>
-      <FavoritesTable favoriteMatches={favoriteMatches} />
+      <FavoritesTable favoriteMatches={favoriteMatches} onDeleteFavorite={handleRemoveFavorite}/>
       <h1 className="text-center text-3xl m-5">Live:</h1>
       <table className="table bg-opacity-60">
         <thead className="text-base">
@@ -106,16 +106,7 @@ export const ScoreTable: React.FC = () => {
                       handleAddFavorite(match);
                     }}
                   >
-                    +
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRemoveFavorite(match.match_id);
-                    }}
-                  >
-                    -
+                    Add
                   </button>
                 </td>
               </tr>
