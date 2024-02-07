@@ -1,5 +1,6 @@
 import React from "react";
 import { MatchProps } from "./ScoreTable";
+import { useNavigate } from "react-router-dom";
 
 type FavoritesTableProps = {
   favoriteMatches: string[];
@@ -8,10 +9,17 @@ type FavoritesTableProps = {
 export const FavoritesTable: React.FC<FavoritesTableProps> = ({
   favoriteMatches,
 }) => {
+
+  const navigate = useNavigate();
+
+  const handleRowClick = (match: MatchProps) => {
+    navigate(`/match-page/${match.match_id}`, { state: { match } });
+  };
+
   return (
-    <div className="overflow-x-auto text-white m-10">
+    <div className="overflow-x-auto m-10">
       <table className="table bg-opacity-60">
-        <thead className="text-white text-base">
+        <thead className="text-base">
           <tr>
             <th></th>
             <th>Home Team</th>
@@ -22,11 +30,12 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {favoriteMatches.map(matchId => {
-            // Retrieve match data from localStorage
-            const matchData = JSON.parse(localStorage.getItem(`favoriteMatch_${matchId}`) || "null") as MatchProps;
+          {favoriteMatches.map((matchId) => {
+            const matchData = JSON.parse(
+              localStorage.getItem(`favoriteMatch_${matchId}`) || "null"
+            ) as MatchProps;
             return (
-              <tr key={matchId}>
+              <tr key={matchId} onClick={() => {handleRowClick(matchData)}}>
                 <td>
                   <img
                     className="size-5"

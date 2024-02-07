@@ -19,7 +19,6 @@ type MatchProps = {
 };
 
 export const MatchPage: React.FC = () => {
-  const { matchId } = useParams<{ matchId: string }>();
   const location = useLocation();
   const match = location.state?.match as MatchProps;
 

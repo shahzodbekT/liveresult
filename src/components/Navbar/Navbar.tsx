@@ -17,21 +17,17 @@ export const Navbar = ({
   const [currentTheme, setCurrentTheme] = useState<string>("light");
 
   useEffect(() => {
-    // Retrieve the theme from localStorage
     const savedTheme = localStorage.getItem("theme");
 
-    // Set the theme to the saved theme or default to 'light'
     setCurrentTheme(savedTheme || "light");
 
-    // Apply the theme when the component mounts or when the theme changes
     applyTheme(savedTheme || "light");
-  }, [currentTheme]); // Include currentTheme in the dependency array
+  }, [currentTheme]);
 
   const toggleTheme = (): void => {
-    // Toggle between 'light' and 'dark' themes
     setCurrentTheme((currentTheme) => {
       const newTheme = currentTheme === "light" ? "dark" : "light";
-      localStorage.setItem("theme", newTheme); // Save the new theme in localStorage
+      localStorage.setItem("theme", newTheme);
       return newTheme;
     });
   };
@@ -42,8 +38,7 @@ export const Navbar = ({
   };
 
   const handleLogout = (): void => {
-    localStorage.setItem("userName", ""); // Set an empty string or handle as needed
-    // Additional logic for logout, state update, or redirect can go here
+    localStorage.setItem("userName", "");
   };
 
   return (
