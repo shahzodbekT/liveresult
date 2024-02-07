@@ -1,10 +1,10 @@
 import { AppButton } from "../../components/AppButton/AppButton";
 import { AppInput } from "../../components/AppInput/AppInput";
-import { Navbar } from "../../components/Navbar/Navbar";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const registrationPageFields = {
   userEmail: "",
@@ -40,8 +40,8 @@ export const RegistrationPage = () => {
   const onRegistrationFormSubmit = (data: any) => {
     console.log(data);
     if (data) {
-      navigate("/profile-page");
-      localStorage.setItem('userName', data.userName)
+      navigate("/login-page");
+      localStorage.setItem("userName", data.userName);
     }
   };
 
@@ -92,6 +92,9 @@ export const RegistrationPage = () => {
           )}
         />
         <AppButton type="submit" buttonText="Зарегистрироваться" />
+        <Link to="/login-page" className="m-2" style={{ cursor: "pointer" }}>
+          Уже есть аккаунт? Войти
+        </Link>
       </form>
     </div>
   );

@@ -4,7 +4,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const registrationPageFields = {
   userEmail: "",
@@ -76,7 +76,8 @@ export const LoginPage = () => {
             />
           )}
         />
-        <AppButton type="submit" buttonText="Зарегистрироваться" />
+        <AppButton type="submit" buttonText="Войти" />
+        <Link to="/" className="m-2">Нет аккаунта? Зарегистрироваться</Link>
       </form>
     </div>
   );

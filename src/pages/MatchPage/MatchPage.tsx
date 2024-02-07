@@ -1,6 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useShowMatchDetailsQuery } from "../../store/Api/matchApi";
+import { useParams, useLocation } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 type MatchProps = {
@@ -21,13 +20,8 @@ type MatchProps = {
 
 export const MatchPage: React.FC = () => {
   const { matchId } = useParams<{ matchId: string }>();
-  const { data, isLoading } = useShowMatchDetailsQuery(matchId || "");
-
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
-  const match: MatchProps | undefined = data?.response?.find(match => match.match_id === matchId);
+  const location = useLocation();
+  const match = location.state?.match as MatchProps;
 
   if (!match) {
     return <h1>Match not found</h1>;
@@ -36,15 +30,21 @@ export const MatchPage: React.FC = () => {
   return (
     <>
       <Navbar linkText="Main" navText="<= Back" path="/main-page" />
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_xl_2x/f_auto/primary/ydk9vatpnihwfquy6zq3)",
-        }}
-      >
+      <div className="hero min-h-screen">
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
+          <div className="max-w-md text-lg">
+            <div className="flex flex-row gap-10 mb-4 ">
+              <img
+                src={match.team_home_badge}
+                alt="home-team"
+                className="size-24"
+              />
+              <img
+                src={match.team_away_badge}
+                alt="away-team"
+                className="size-24"
+              />
+            </div>
             <h1>
               {match.match_hometeam_name} vs {match.match_awayteam_name}
             </h1>
@@ -53,8 +53,6 @@ export const MatchPage: React.FC = () => {
             <p>
               Score: {match.match_hometeam_score} - {match.match_awayteam_score}
             </p>
-            <img src={match.team_home_badge} alt="home-team" />
-            <img src={match.team_away_badge} alt="away-team" />
           </div>
         </div>
       </div>
