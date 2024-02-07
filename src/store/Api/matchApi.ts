@@ -1,14 +1,15 @@
 import {
   createApi,
-  fetchBaseQuery,
-  FetchArgs,
+  fetchBaseQuery
 } from "@reduxjs/toolkit/query/react";
 
 const TOKEN =
   "bba861045791d641454195f55c7ba231b5cd6dac62597c2070b0399df5385754";
 
 export interface IShowMatchesResponse {
-  map(arg0: (match: any) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
+  map(
+    arg0: (match: any) => import("react/jsx-runtime").JSX.Element
+  ): import("react").ReactNode;
   response: [
     {
       match_id: "343880";
@@ -35,14 +36,22 @@ export const matchApi = createApi({
   }),
   endpoints: (builder) => ({
     showMatches: builder.query<IShowMatchesResponse, string>({
-      query: (arg: string) =>
-        ({
-          url: `/?action=get_events&match_live=1&APIkey=${TOKEN}`,
-          method: "GET",
-        } as FetchArgs),
+      query: () => ({
+        url: `/?action=get_events&match_live=1&APIkey=${TOKEN}`,
+        method: "GET",
+      }),
+    }),
+    showMatchDetails: builder.query<IShowMatchesResponse, string>({
+      query: () => ({
+        url: `/?action=get_events&match_live=1&APIkey=${TOKEN}`,
+        method: "GET",
+        params: {
+          matchId: "12"
+        }
+      }),
     }),
   }),
 });
 
 // Export the showMatches query
-export const { useShowMatchesQuery } = matchApi;
+export const { useShowMatchesQuery, useShowMatchDetailsQuery } = matchApi;

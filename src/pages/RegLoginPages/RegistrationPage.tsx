@@ -19,10 +19,6 @@ const registrationValidationSchema = yup.object({
     .required("Обязательное поле")
     .email("Неправильный e-mail"),
   userName: yup.string().required("Обязательное поле"),
-  userPhoneNumber: yup
-    .string()
-    .required("Обязательное поле")
-    .matches(/^9989\d{8}$/, "Номер не валиден"),
   userPassword: yup
     .string()
     .required("Обязательное поле")
@@ -78,19 +74,6 @@ export const RegistrationPage = () => {
               placeholder="Введите имя"
               hasError={!!errors.userName}
               errorText={errors.userName?.message as string}
-              {...field}
-            />
-          )}
-        />
-        <Controller
-          name="userPhoneNumber"
-          control={control}
-          render={({ field }) => (
-            <AppInput
-              type="tel"
-              placeholder="Введите номер телефона"
-              hasError={!!errors.userPhoneNumber}
-              errorText={errors.userPhoneNumber?.message as string}
               {...field}
             />
           )}
