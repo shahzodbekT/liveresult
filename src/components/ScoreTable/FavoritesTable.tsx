@@ -19,7 +19,7 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
 
   return (
     <div className="overflow-x-auto m-10">
-      <table className="table bg-opacity-60">
+      <table className="table table-zebra">
         <thead className="text-base">
           <tr>
             <th></th>

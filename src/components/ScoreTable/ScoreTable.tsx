@@ -60,7 +60,7 @@ export const ScoreTable: React.FC = () => {
       <h1 className="text-center text-3xl m-5">Favorites:</h1>
       <FavoritesTable favoriteMatches={favoriteMatches} onDeleteFavorite={handleRemoveFavorite}/>
       <h1 className="text-center text-3xl m-5">Live:</h1>
-      <table className="table bg-opacity-60">
+      <table className="table table-zebra">
         <thead className="text-base">
           <tr>
             <th></th>
