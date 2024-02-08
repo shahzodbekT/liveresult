@@ -31,7 +31,7 @@ export const MatchPage: React.FC = () => {
       <Navbar linkText="Main" navText="<= Back" path="/main-page" />
       <div className="hero min-h-screen">
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md text-lg">
+          <div className="max-w-md text-lg bg-black p-10 rounded-3xl">
             <div className="flex flex-row gap-10 mb-4 ">
               <img
                 src={match.team_home_badge}

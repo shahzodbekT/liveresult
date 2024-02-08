@@ -42,7 +42,7 @@ export const Navbar = ({
   };
 
   return (
-    <div className="navbar bg-base-100 w-full">
+    <div className="navbar bg-base-100 w-full fixed">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" to={path}>
           {navText}
