@@ -44,7 +44,6 @@ export const RegistrationPage = () => {
   const navigate = useNavigate();
 
   const onRegistrationFormSubmit = (data: RegistrationFormData) => {
-    console.log(data);
     if (data) {
       navigate("/login-page");
       localStorage.setItem("userName", data.userName);
@@ -75,7 +74,7 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <>
+    <div>
       <div onClick={toggleTheme} className="fixed right-1 top-1">
         <label className="swap swap-rotate">
           {/* sun icon */}
@@ -139,6 +138,6 @@ export const RegistrationPage = () => {
           </Link>
         </form>
       </div>
-    </>
+    </div>
   );
 };

@@ -17,8 +17,13 @@ export const FavoritesTable: React.FC<FavoritesTableProps> = ({
     navigate(`/match-page/${match.match_id}`, { state: { match } });
   };
 
+  if (favoriteMatches.length === 0) {
+    return null; // Don't render anything if there are no favorite matches
+  }
+
   return (
     <div className="overflow-x-auto m-10">
+      <h1 className="text-center text-3xl m-5">Favorites:</h1>
       <table className="table table-zebra">
         <thead className="text-base">
           <tr>

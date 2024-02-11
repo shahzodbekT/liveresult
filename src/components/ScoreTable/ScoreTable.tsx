@@ -57,8 +57,10 @@ export const ScoreTable: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
-      <h1 className="text-center text-3xl m-5">Favorites:</h1>
-      <FavoritesTable favoriteMatches={favoriteMatches} onDeleteFavorite={handleRemoveFavorite}/>
+      <FavoritesTable
+        favoriteMatches={favoriteMatches}
+        onDeleteFavorite={handleRemoveFavorite}
+      />
       <h1 className="text-center text-3xl m-5">Live:</h1>
       <table className="table table-zebra">
         <thead className="text-base">
@@ -113,7 +115,11 @@ export const ScoreTable: React.FC = () => {
             ))}
         </tbody>
       </table>
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && (
+        <div className="flex mt-10 justify-center align-middle">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
+      )}
     </div>
   );
 };

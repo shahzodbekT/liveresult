@@ -6,7 +6,7 @@ export const store = configureStore({
     [matchApi.reducerPath]: matchApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(matchApi.middleware), // Use 'as any' to override type mismatch
+    getDefaultMiddleware().concat(matchApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

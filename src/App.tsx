@@ -33,8 +33,8 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      <div className="max-w-full">
+    <div className="App" >
+      <div className="max-w-full" >
         <Provider store={store}>
           <RouterProvider router={router} />
         </Provider>

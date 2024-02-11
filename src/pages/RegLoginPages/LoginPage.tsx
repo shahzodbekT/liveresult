@@ -41,7 +41,6 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   const onLoginFormSubmit = (data: LoginFormValues) => {
-    console.log(data);
     if (data) {
       navigate("/profile-page");
     }
